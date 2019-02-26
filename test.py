@@ -12,7 +12,7 @@ class MyApp(QMainWindow):
 
     def initUI(self):
 
-        # 툴바 1 상세모드 --------------------------------------------------------
+        # 툴바 1 상세모드 ! --------------------------------------------------------
         toolbar_mode = QAction(QIcon('mode.png'), '상세모드', self)
         toolbar_mode.setShortcut('Ctrl+D')
         toolbar_mode.setStatusTip('상세 모드입니다.')
