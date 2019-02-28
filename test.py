@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 
 
-class MyApp(QMainWindow):
+class MyApp(QWidget):
 
     def __init__(self):
         super().__init__()
@@ -40,20 +40,20 @@ class MyApp(QMainWindow):
         # ------------------------------------------------------------
 
         # 라인입력 1 URL ----------------------------------------------------
-        line_url = QLineEdit(self)
-        line_url.setGeometry(10, 50, 570, 200)
+        line_url = QLineEdit()
+        #line_url.setGeometry(10, 50, 570, 200)
 
         line_url.textChanged[str].connect(self.input_url)
         # -------------------------------------------------------------
 
         # 라벨 1 다운 경로 표시 ------------------------------------------------------------
-        self.label_location = QLabel('다운로드 위치', self)
-        self.label_location.setGeometry(10, 260, 200, 30)
+        label_location = QLabel('다운로드 위치')
+        #self.label_location.setGeometry(10, 260, 200, 30)
         # ------------------------------------------------------------
 
         # 버튼 1 다운 경로 지정 ------------------------------------------------------------
         btn_fileload = QPushButton('다운로드 위치', self)
-        btn_fileload.setGeometry(250, 260, 100, 30)
+        #btn_fileload.setGeometry(250, 260, 100, 30)
 
         btn_fileload.clicked.connect(self.dialog_load)
         # ------------------------------------------------------------
@@ -64,28 +64,63 @@ class MyApp(QMainWindow):
         combo_format.addItem('mp4')
         combo_format.addItem('mkv')
         combo_format.addItem('mp4-1080')
-        combo_format.setGeometry(360, 260, 70, 30)
+        #combo_format.setGeometry(360, 260, 70, 30)
 
         combo_format.activated[str].connect(self.input_format)
         # ------------------------------------------------------------
 
         # 버튼 2 다운로드 ------------------------------------------------------------
         btn_download = QPushButton('다운로드 시작', self)
-        btn_download.setGeometry(470, 260, 100, 30)
+        #btn_download.setGeometry(470, 260, 100, 30)
 
         btn_download.clicked.connect(self.dialog_down)
         # ------------------------------------------------------------
 
-
-        # ------------------------------------------------------------
-
-
-        # ------------------------------------------------------------
-
+        # 박스 레이아웃 ------------------------------------------------------------
 
         self.setWindowTitle('AllDownloader')
         self.setGeometry(400, 400, 600, 400)
         self.show()
+
+
+
+        group_upper = QGroupBox('다운로드 할 URL을 복사하세요.')
+
+        box_upper = QHBoxLayout()
+        box_upper.addWidget(line_url)
+        group_upper.setLayout(box_upper)
+
+        bigbox_upper = QVBoxLayout()
+        bigbox_upper.addWidget(group_upper)
+
+
+        group_down = QGroupBox('다운 위치와 변환 방식을 선택하세요.')
+
+        box_down = QHBoxLayout()
+        box_down.addWidget(label_location)
+        box_down.addWidget(btn_fileload)
+        box_down.addWidget(combo_format)
+        box_down.addWidget(btn_download)
+        group_down.setLayout(box_down)
+
+        bigbox_down = QVBoxLayout()
+        bigbox_down.addWidget(group_down)
+
+        box_base = QVBoxLayout()
+        box_base.addLayout(bigbox_upper)
+        box_base.addLayout(bigbox_down)
+
+        self.setLayout(box_base)
+
+        # ------------------------------------------------------------
+
+
+        # ------------------------------------------------------------
+
+
+        # ------------------------------------------------------------
+
+
 
 
     # 이벤트 ----------------------------------------------
@@ -122,4 +157,5 @@ class MyApp(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MyApp()
+    ex.show()
     sys.exit(app.exec_())
