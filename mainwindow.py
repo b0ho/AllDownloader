@@ -12,8 +12,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(700, 500)
         MainWindow.setMinimumSize(QtCore.QSize(700, 500))
+        MainWindow.resize(700, 500)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -78,7 +78,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.btn_location.clicked.connect(MainWindow.btn_loc_clicked)
         self.btn_download.clicked.connect(MainWindow.btn_down_clicked)
-        self.cmbx_format.currentIndexChanged['QString'].connect(MainWindow.cmbx_format_choiced)
+        self.cmbx_format.currentIndexChanged['QString'].connect(
+            MainWindow.cmbx_format_choiced)
         self.chbx_subtitle.toggled['bool'].connect(MainWindow.chbx_sub_clicked)
         self.text_url.textChanged.connect(MainWindow.text_url_input)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -86,7 +87,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_location.setText(_translate("MainWindow", "다운로드 경로가 여기에 표시됩니다.!"))
+        self.label_location.setText(_translate(
+            "MainWindow", "다운로드 경로가 여기에 표시됩니다.!"))
         self.btn_location.setText(_translate("MainWindow", "위치"))
         self.chbx_subtitle.setText(_translate("MainWindow", "자막"))
         self.cmbx_format.setItemText(0, _translate("MainWindow", "mp3"))
@@ -98,8 +100,6 @@ class Ui_MainWindow(object):
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
         self.option.setText(_translate("MainWindow", "옵션"))
         self.help.setText(_translate("MainWindow", "도움말"))
-
-
 
 
 if __name__ == "__main__":
