@@ -1,7 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-from PyQt5.QAxContainer import *
 from PyQt5.QtGui import *
 
 # 메인 윈도우 폼
@@ -22,6 +21,7 @@ class MyWindow(QMainWindow, form_class):
         # 버튼-위치 에 대한 이벤트 연결
         self.btn_location.clicked.connect(self.btn_loc_clicked)
 
+        #
 
 
     # 버튼-위치 이벤트
