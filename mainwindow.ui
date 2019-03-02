@@ -76,7 +76,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButton">
+         <widget class="QToolButton" name="btn_location">
           <property name="minimumSize">
            <size>
             <width>50</width>
