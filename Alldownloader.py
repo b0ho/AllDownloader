@@ -1,17 +1,19 @@
 import sys
+import subprocess
 import os.path
 from PyQt5.QtWidgets import *
 import csv
+import getpass
 import atexit
-import mainwindow
+import main_window
 
 csv_name = "option.csv"
 
 
-class Alldownloader(QMainWindow, mainwindow.Ui_MainWindow):
+class Alldownloader(QMainWindow, main_window.Ui_MainWindow):
     # 옵션을 위한 변수들
     opt_loc = ""
-    opt_sub = False
+    opt_sub = 0
     opt_format = ""
     options = []
 
@@ -72,16 +74,20 @@ class Alldownloader(QMainWindow, mainwindow.Ui_MainWindow):
             f = open(csv_name, "w", encoding="utf-8", newline="")
             wr = csv.writer(f)
             # 생성할 기본 옵션 값들
-            wr.writerow(["/users/ybg4828/Downloads/", True, "mp3"])
+            wr.writerow(["/users/ybg4828/Downloads/", 0, "mp3"])
             f.close()
 
     # Ui 로드
     def setUi(self):
-        print("setUi 실행")
-        if opt_sub == True:
-            self.chbx_subtitle = True
+        print("setUi 실행 - 가져온 옵션 값으로 프로그램을 세팅")
+
+        # 자막 체크 여부확인 및 결정
+        if int(opt_sub) is 1:
+            print("opt_sub = ", opt_sub, "자막 옵션 켜짐")
+            self.chbx_subtitle.setChecked(True)
         else:
-            self.chbx_subtitle = False
+            print("opt_sub = ", opt_sub, "자막 옵션 꺼짐")
+            self.chbx_subtitle.setChecked(False)
 
     # 툴바-옵션 이벤트
     def tbr_opt_clicked(self):
@@ -106,10 +112,10 @@ class Alldownloader(QMainWindow, mainwindow.Ui_MainWindow):
         global opt_sub
         if self.chbx_subtitle.isChecked() == True:
             print("자막 선택")
-            opt_sub = True
+            opt_sub = 1
         else:
             print("자막 선택 해제")
-            opt_sub = False
+            opt_sub = 0
 
     # 콤보박스-포맷 이벤트
     def cmbx_format_choiced(self):
@@ -126,15 +132,50 @@ class Alldownloader(QMainWindow, mainwindow.Ui_MainWindow):
             QMessageBox.No,
         )
         if reply == QMessageBox.Yes:
+
             self.func_down()
             # event.accept()
         else:
             print("취소")
+            print(
+                "테스트",
+                os.system(
+                    'youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" -o "/Users/ybg4828/Downloads/%(title)s.%(ext)s" "https://www.youtube.com/watch?v=eTIOh7vhdN8"'
+                    # 'youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" -o "/Users/ybg4828/Downloads/%(title)s.%(ext)s" "https://www.youtube.com/watch?v=eTIOh7vhdN8"'
+                )
+            )
             # event.ignore()
 
     # 다운로드 수행 기능
     def func_down(self):
         print("다운로드 시작")
+
+        # text로부터 url 배열 생성
+        text = self.text_url.toPlainText()
+        urls = text.splitlines()
+        while "" in urls:
+            urls.remove("")
+        print(urls)
+
+        # 가져온 url로부터 명령어 생성
+        for n in urls:
+
+            url = 'youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" -o "/Users/' + getpass.getuser() + '/Downloads/%(title)s.%(ext)s" "' + n + '"'
+            print(url)
+
+            print(
+                os.system(url)
+
+
+                #'youtube-dl --extract-audio --audio-format mp3 -o "/Users/',getpass.getuser(),'/Downloads/%(title)s.%(ext)s" "',n,'"',
+                #'youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" -o "/Users/'+ getpass.getuser()+ '/Downloads/%(title)s.%(ext)s" "' + n+ '"'
+                # youtube-dl -f "bestvideo+bestaudio" --merge-output-format "mkv" -o "C:/Users/ybg48/Downloads/%(title)s.%(ext)s" --sub-lang ko ""
+            )
+            # https://www.youtube.com/watch?v=eTIOh7vhdN8
+
+            # cmd = ["powershell.exe","Start-Process","youtube-dl","/Users/ybg4828/work/Alldownloader/youtube-dl-master/bin/youtube-dl","-Verb","runAs",]
+
+            # print(subprocess.run(cmd, shell=True))
 
 
 # 프로그램 실행

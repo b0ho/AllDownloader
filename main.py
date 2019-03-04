@@ -9,7 +9,7 @@ from PyQt5.QtGui import *
 # 메인 윈도우 폼
 form_class = uic.loadUiType("mainwindow.ui")[0]
 
-csv_name = 'option.csv'
+csv_name = "option.csv"
 
 
 class MyWindow(QMainWindow, form_class):
@@ -31,15 +31,15 @@ class MyWindow(QMainWindow, form_class):
         def func_exit():
             print("프로그램 종료", opt_sub)
 
-            f = open('tmp', 'w', encoding='utf-8', newline='')
+            f = open("tmp", "w", encoding="utf-8", newline="")
             wr = csv.writer(f)
             # 생성할 기본 옵션 값들
 
             wr.writerow([opt_loc, opt_sub, opt_format])
             f.close()
-            os.rename('tmp', csv_name)
+            os.rename("tmp", csv_name)
             #
-            f = open(csv_name, 'r', encoding='utf-8')
+            f = open(csv_name, "r", encoding="utf-8")
             rdr = csv.reader(f)
             for line in rdr:
                 print(line)
@@ -56,7 +56,7 @@ class MyWindow(QMainWindow, form_class):
         # 옵션 파일이 있을 경우 로드
         if os.path.exists(csv_name):
             print("옵션파일 존재함")
-            f = open(csv_name, 'r', encoding='utf-8')
+            f = open(csv_name, "r", encoding="utf-8")
             rdr = csv.reader(f)
 
             for line in rdr:
@@ -74,10 +74,10 @@ class MyWindow(QMainWindow, form_class):
         # 옵션 파일이 없을 경우 생성
         else:
             print("옵션파일 없음 새로 생성")
-            f = open(csv_name, 'w', encoding='utf-8', newline='')
+            f = open(csv_name, "w", encoding="utf-8", newline="")
             wr = csv.writer(f)
             # 생성할 기본 옵션 값들
-            wr.writerow(['/users/ybg4828/Downloads/', True, "mp3"])
+            wr.writerow(["/users/ybg4828/Downloads/", True, "mp3"])
             f.close()
 
     # Ui 로드
@@ -97,6 +97,7 @@ class MyWindow(QMainWindow, form_class):
     # 툴바-도움말 이벤트
 
     def tbr_help_clicked(self):
+
         print("도움말 화면 실행")
 
     # 텍스트-URL 이벤트
@@ -132,7 +133,12 @@ class MyWindow(QMainWindow, form_class):
     def btn_down_clicked(self, event):
         print("다운 확인 다이얼 오픈")
         reply = QMessageBox.question(
-            self, '다운시작', '다운로드를 시작하시겠습니까?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            self,
+            "다운시작",
+            "다운로드를 시작하시겠습니까?",
+            QMessageBox.Yes | QMessageBox.No,
+            QMessageBox.No,
+        )
         if reply == QMessageBox.Yes:
             self.func_down()
             # event.accept()
