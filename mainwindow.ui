@@ -44,12 +44,25 @@
          <number>10</number>
         </property>
         <item>
-         <widget class="QTextEdit" name="text_url"/>
+         <widget class="QTextEdit" name="text_url">
+          <property name="toolTip">
+           <string>여기에 다운받을 영상의 url을 복사하여 붙여넣으세요.</string>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhMultiLine</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0,0">
+        <property name="spacing">
+         <number>20</number>
+        </property>
         <property name="leftMargin">
          <number>0</number>
         </property>
@@ -66,8 +79,8 @@
          <widget class="QLabel" name="label_location">
           <property name="minimumSize">
            <size>
-            <width>230</width>
-            <height>0</height>
+            <width>300</width>
+            <height>25</height>
            </size>
           </property>
           <property name="text">
@@ -79,8 +92,14 @@
          <widget class="QToolButton" name="btn_location">
           <property name="minimumSize">
            <size>
-            <width>50</width>
-            <height>0</height>
+            <width>70</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="toolTip">
@@ -90,15 +109,27 @@
            <string/>
           </property>
           <property name="text">
-           <string>위치</string>
+           <string>다운위치</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="chbx_subtitle">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>25</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
-            <width>60</width>
+            <width>50</width>
             <height>16777215</height>
            </size>
           </property>
@@ -112,8 +143,23 @@
         </item>
         <item>
          <widget class="QComboBox" name="cmbx_format">
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
           </property>
           <item>
            <property name="text">
@@ -144,6 +190,18 @@
         </item>
         <item>
          <widget class="QPushButton" name="btn_download">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>다운로드 시작</string>
           </property>
@@ -252,22 +310,6 @@
     <hint type="destinationlabel">
      <x>358</x>
      <y>500</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>text_url</sender>
-   <signal>textChanged()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>text_url_input()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>66</x>
-     <y>393</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>57</x>
-     <y>434</y>
     </hint>
    </hints>
   </connection>
