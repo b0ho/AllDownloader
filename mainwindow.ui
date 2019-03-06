@@ -89,7 +89,13 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="btn_location">
+         <widget class="QPushButton" name="btn_location">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
             <width>70</width>
@@ -101,12 +107,6 @@
             <width>70</width>
             <height>16777215</height>
            </size>
-          </property>
-          <property name="toolTip">
-           <string/>
-          </property>
-          <property name="whatsThis">
-           <string/>
           </property>
           <property name="text">
            <string>다운위치</string>
@@ -143,9 +143,15 @@
         </item>
         <item>
          <widget class="QComboBox" name="cmbx_format">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>10</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
-            <width>70</width>
+            <width>120</width>
             <height>25</height>
            </size>
           </property>
@@ -153,6 +159,18 @@
            <size>
             <width>16777215</width>
             <height>16777215</height>
+           </size>
+          </property>
+          <property name="sizeIncrement">
+           <size>
+            <width>10</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>20</width>
+            <height>0</height>
            </size>
           </property>
           <property name="layoutDirection">
@@ -173,17 +191,17 @@
           </item>
           <item>
            <property name="text">
-            <string>원본</string>
+            <string>일반화질</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>mp4[고화질]</string>
+            <string>고화질</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>mp4[저화질]</string>
+            <string>저화질</string>
            </property>
           </item>
          </widget>
@@ -236,6 +254,7 @@
    <addaction name="option"/>
    <addaction name="help"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="option">
    <property name="text">
     <string>옵션</string>
@@ -249,22 +268,6 @@
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>btn_location</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>btn_loc_clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>285</x>
-     <y>466</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>280</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>btn_download</sender>
    <signal>clicked()</signal>
@@ -288,8 +291,8 @@
    <slot>cmbx_format_choiced()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>437</x>
-     <y>467</y>
+     <x>575</x>
+     <y>480</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -304,12 +307,28 @@
    <slot>chbx_sub_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>363</x>
-     <y>468</y>
+     <x>447</x>
+     <y>476</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
      <y>500</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_location</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>btn_loc_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>457</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>

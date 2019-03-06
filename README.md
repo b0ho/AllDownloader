@@ -3,10 +3,9 @@ D: && python -m PyQt5.uic.pyuic -x "D:/OneDrive - Chonnam National University/wo
 
 할일
 
-가상환경
 setup 설정
 다운시 백그라운드 설정
-자막 옵션 반영
-포맷 옵션 반영
-아이콘 xe만들기
+아이콘 
+exe만들기
 배포
+****
