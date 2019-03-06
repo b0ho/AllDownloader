@@ -191,6 +191,11 @@
           </item>
           <item>
            <property name="text">
+            <string>mkv[고화질]</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>일반화질</string>
            </property>
           </item>
