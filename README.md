@@ -1,11 +1,9 @@
-python -m PyQt5.uic.pyuic -x /Users/ybg4828/work/AllDownloader/mainwindow.ui -o /Users/ybg4828/work/AllDownloader/mainwindow.py && python /Users/ybg4828/work/AllDownloader/mainwindow.py
-D: && python -m PyQt5.uic.pyuic -x "D:/OneDrive - Chonnam National University/work/AllDownloader/mainwindow.ui" -o "D:/OneDrive - Chonnam National University/work/AllDownloader/mainwindow.py" && python "D:/OneDrive - Chonnam National University/work/AllDownloader/mainwindow.py"
+AllDownloader
 
-할일
+로컬환경에서 유튜브 등의 영상을 다운 받을 수 있습니다.
 
-setup 설정
-다운시 백그라운드 설정
-아이콘 
-exe만들기
-배포
-****
+youtube-dl과 ffmpeg 라이브러리가 사용되었습니다.
+
+다운받을 URL을 복사한 뒤 포맷등을 설정합니다.
+
+다운로드하면 재생목록을 포함한 모든 영상이 다운로드됩니다.
