@@ -100,6 +100,8 @@ class Alldownloader(QMainWindow, form_class):
         global opt_sub, opt_loc
         print("setUi 실행 - 가져온 옵션 값으로 프로그램을 세팅")
 
+        #self.box_url.setTitle('URL을 복사하세요.')
+
         # 자막 체크 여부확인 및 결정
         if int(opt_sub) is 1:
             print("opt_sub = ", opt_sub, "자막 옵션 켜짐")
